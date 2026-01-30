@@ -19,7 +19,7 @@ func (app *application) mount() http.Handler {
 
 	r.Use(middleware.Timeout(60 * time.Second)) // 60 seconds
 
-	r.Get("/heath", func(w http.ResponseWriter, r *http.Request) {
+	r.Get("/health", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("All Good!"))
 	})
 
