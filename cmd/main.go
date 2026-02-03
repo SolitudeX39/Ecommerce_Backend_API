@@ -36,7 +36,7 @@ func main() {
 
 	api := application{
 		config: cfg,
-		// db:     conn,
+		db:     conn,
 	}
 	if err := api.run(api.mount()); err != nil {
 		slog.Error("server failed to start", "error", err)

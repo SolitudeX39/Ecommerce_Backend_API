@@ -16,15 +16,12 @@ func NewTextHandler(service Service) *handler {
 }
 
 func (h *handler) ListProducts(w http.ResponseWriter, r *http.Request) {
-	err := h.service.ListProducts(r.Context())
+	products, err := h.service.ListProducts(r.Context())
 	if err != nil {
 		log.Println(err)
 		http.Error(w, "internal server error", http.StatusInternalServerError)
 		return
 	}
-	products := struct {
-		Products []string `json:"products"`
-	}{}
 
 	json.Write(w, http.StatusOK, products)
 
